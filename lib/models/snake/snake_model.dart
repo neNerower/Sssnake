@@ -5,6 +5,7 @@ import 'direction.dart';
 class SnakeModel {
   List<int> _body = [];
   late Direction _direction;
+  bool _isEating = false;
 
   SnakeModel({int length = 5}) {
     Random random = new Random();
@@ -35,6 +36,71 @@ class SnakeModel {
       case Direction.right:
         return -1;
     }
+  }
+
+  // Snake moves every game tick
+  void move() {
+    switch (_direction) {
+      // Going up
+      case Direction.up:
+        if (_body.last > fieldWidth * (fieldWidth -1)) {
+          // Go throuth up wall to down
+          _body.add(_body.last - fieldWidth * (fieldWidth - 1));
+        } else {
+          _body.add(_body.last + fieldWidth);
+        }
+        break;
+
+      // Going down
+      case Direction.down:
+        if (_body.last < fieldWidth) {
+          // Go throuth down wall to up
+          _body.add(_body.last + fieldWidth * (fieldWidth - 1));
+        } else {
+          _body.add(_body.last - fieldWidth);
+        }        
+        break;
+
+      // Going left
+      case Direction.left:
+        if (_body.last % fieldWidth == 0) {
+          // Go throuth left wall to right
+          _body.add(_body.last + fieldWidth - 1);
+        } else {
+          _body.add(_body.last - 1);
+        }
+        break;
+
+      // Going right
+      case Direction.right:
+          // Go throuth right wall to left
+        if (_body.last % fieldWidth == fieldWidth - 1) {
+          _body.add(_body.last - fieldWidth + 1);
+        } else {
+          _body.add(_body.last + 1);
+        }
+        break;
+    }
+
+    // If is eating now
+    if (_isEating) {
+      _isEating = false;
+      return;
+    }
+
+    // Snake leave the last field
+    _body.removeAt(0);
+  }
+
+  // When snake find apple
+  void eat() {
+    _isEating = true;
+  }
+
+  // Is snake alive
+  bool isAlive() {
+    // Check the head does not cross the body
+    return _body.indexOf(_body.last) == _body.length -1;
   }
 
   Direction getDirection() {
