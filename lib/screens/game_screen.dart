@@ -7,6 +7,8 @@ import 'package:snake/models/snake/direction.dart';
 import 'package:snake/models/snake/snake_model.dart';
 import 'package:snake/models/speed.dart';
 
+import 'components/cell.dart';
+
 class GameScreen extends StatefulWidget {
   GameScreen({Key? key}) : super(key: key);
 
@@ -61,32 +63,43 @@ class _GameScreenState extends State<GameScreen> {
             Expanded(
               child: GestureDetector(
                 onVerticalDragUpdate: (details) {
-                  if (snake.getDirection() != Direction.down && details.delta.dy > 0) {
+                  if (snake.getDirection() != Direction.down &&
+                      details.delta.dy > 0) {
                     // Turn UP
                     snake.setDirection(Direction.up);
-                  } else if (snake.getDirection() != Direction.up && details.delta.dy < 0) {
+                  } else if (snake.getDirection() != Direction.up &&
+                      details.delta.dy < 0) {
                     // Turn DOWN
                     snake.setDirection(Direction.down);
                   }
                 },
                 onHorizontalDragUpdate: (details) {
-                   if (snake.getDirection() != Direction.right && details.delta.dx < 0) {
+                  if (snake.getDirection() != Direction.right &&
+                      details.delta.dx < 0) {
                     // Turn LEFT
                     snake.setDirection(Direction.left);
-                  } else if (snake.getDirection() != Direction.left && details.delta.dx > 0) {
+                  } else if (snake.getDirection() != Direction.left &&
+                      details.delta.dx > 0) {
                     // Turn RIGHT
                     snake.setDirection(Direction.right);
                   }
                 },
                 child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: fieldHeight * fieldWidth,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: fieldWidth,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                        
-                    }),
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: fieldHeight * fieldWidth,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: fieldWidth,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    if (snake.getBody().contains(index)) {
+                      return Cell(color: Colors.white);
+                    } else if (apple == index) {
+                      return Cell(color: Colors.green);
+                    } else {
+                      return Cell(color: Colors.grey[850]);
+                    }
+                  },
+                ),
               ),
             ),
           ],

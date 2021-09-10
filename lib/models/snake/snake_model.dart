@@ -100,16 +100,16 @@ class SnakeModel {
   // Is snake alive
   bool isAlive() {
     // Check the head does not cross the body
-    return _body.indexOf(getHead()) == this.getLength() -1;
+    return _body.indexOf(getHead()) == _body.length -1;
   }
 
   // Get snake head position
   int getHead() {
     return _body.last;
   }
-  // Get snake length
-  int getLength() {
-    return _body.length;
+  // Get snake`s body
+  List<int> getBody() {
+    return _body;
   }
 
   Direction getDirection() {

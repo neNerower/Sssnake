@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Cell extends StatelessWidget {
-  final Color color;
+  final Color? color;
   const Cell({required this.color});
 
   @override
