@@ -43,21 +43,21 @@ class SnakeModel {
     switch (_direction) {
       // Going up
       case Direction.up:
-        if (getHead() > fieldWidth * (fieldWidth -1)) {
+        if (getHead() <= fieldWidth) {
           // Go throuth up wall to down
-          _body.add(getHead() - fieldWidth * (fieldWidth - 1));
+          _body.add(getHead() + fieldWidth * (fieldHeight - 1));
         } else {
-          _body.add(getHead() + fieldWidth);
+          _body.add(getHead() - fieldWidth);
         }
         break;
 
       // Going down
       case Direction.down:
-        if (getHead() < fieldWidth) {
+        if (getHead() >= fieldWidth * (fieldHeight -1)) {
           // Go throuth down wall to up
-          _body.add(getHead() + fieldWidth * (fieldWidth - 1));
+          _body.add(getHead() - fieldWidth * (fieldHeight - 1));
         } else {
-          _body.add(getHead() - fieldWidth);
+          _body.add(getHead() + fieldWidth);
         }        
         break;
 

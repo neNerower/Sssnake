@@ -28,7 +28,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   // Runnig game process
-  void rumGame({Speed speed = Speed.normal}) {
+  void runGame({Speed speed = Speed.normal}) {
     var duration = Duration(milliseconds: (400 - speed.index * 100));
     Timer.periodic(duration, (Timer timer) {
       _updateField();
@@ -61,14 +61,15 @@ class _GameScreenState extends State<GameScreen> {
         body: Column(
           children: <Widget>[
             Expanded(
+              // Detector to handle screen swipes
               child: GestureDetector(
                 onVerticalDragUpdate: (details) {
                   if (snake.getDirection() != Direction.down &&
-                      details.delta.dy > 0) {
+                      details.delta.dy < 0) {
                     // Turn UP
                     snake.setDirection(Direction.up);
                   } else if (snake.getDirection() != Direction.up &&
-                      details.delta.dy < 0) {
+                      details.delta.dy > 0) {
                     // Turn DOWN
                     snake.setDirection(Direction.down);
                   }
@@ -84,6 +85,7 @@ class _GameScreenState extends State<GameScreen> {
                     snake.setDirection(Direction.right);
                   }
                 },
+                // Creating field veiw
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: fieldHeight * fieldWidth,
@@ -100,6 +102,22 @@ class _GameScreenState extends State<GameScreen> {
                     }
                   },
                 ),
+              ),
+            ),
+            // Control bar
+            Padding(
+              padding: EdgeInsets.only(bottom: 10, left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () => runGame(),
+                    child: const Text('Start'),
+                  ),
+                ],
               ),
             ),
           ],

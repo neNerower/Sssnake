@@ -10,9 +10,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'S-s-snake',
-      // theme: ThemeData(
-      //   primarySwatch: Colors.blue,
-      // ),
       home: GameScreen(),
     );
   }
