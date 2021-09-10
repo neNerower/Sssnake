@@ -43,41 +43,41 @@ class SnakeModel {
     switch (_direction) {
       // Going up
       case Direction.up:
-        if (_body.last > fieldWidth * (fieldWidth -1)) {
+        if (getHead() > fieldWidth * (fieldWidth -1)) {
           // Go throuth up wall to down
-          _body.add(_body.last - fieldWidth * (fieldWidth - 1));
+          _body.add(getHead() - fieldWidth * (fieldWidth - 1));
         } else {
-          _body.add(_body.last + fieldWidth);
+          _body.add(getHead() + fieldWidth);
         }
         break;
 
       // Going down
       case Direction.down:
-        if (_body.last < fieldWidth) {
+        if (getHead() < fieldWidth) {
           // Go throuth down wall to up
-          _body.add(_body.last + fieldWidth * (fieldWidth - 1));
+          _body.add(getHead() + fieldWidth * (fieldWidth - 1));
         } else {
-          _body.add(_body.last - fieldWidth);
+          _body.add(getHead() - fieldWidth);
         }        
         break;
 
       // Going left
       case Direction.left:
-        if (_body.last % fieldWidth == 0) {
+        if (getHead() % fieldWidth == 0) {
           // Go throuth left wall to right
-          _body.add(_body.last + fieldWidth - 1);
+          _body.add(getHead() + fieldWidth - 1);
         } else {
-          _body.add(_body.last - 1);
+          _body.add(getHead() - 1);
         }
         break;
 
       // Going right
       case Direction.right:
           // Go throuth right wall to left
-        if (_body.last % fieldWidth == fieldWidth - 1) {
-          _body.add(_body.last - fieldWidth + 1);
+        if (getHead() % fieldWidth == fieldWidth - 1) {
+          _body.add(getHead() - fieldWidth + 1);
         } else {
-          _body.add(_body.last + 1);
+          _body.add(getHead() + 1);
         }
         break;
     }
@@ -100,7 +100,16 @@ class SnakeModel {
   // Is snake alive
   bool isAlive() {
     // Check the head does not cross the body
-    return _body.indexOf(_body.last) == _body.length -1;
+    return _body.indexOf(getHead()) == this.getLength() -1;
+  }
+
+  // Get snake head position
+  int getHead() {
+    return _body.last;
+  }
+  // Get snake length
+  int getLength() {
+    return _body.length;
   }
 
   Direction getDirection() {
