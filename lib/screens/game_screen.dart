@@ -6,6 +6,7 @@ import 'package:snake/globals/globals.dart';
 import 'package:snake/models/snake/direction.dart';
 import 'package:snake/models/snake/snake_model.dart';
 import 'package:snake/models/speed.dart';
+import 'package:snake/screens/components/play_button.dart';
 
 import 'components/cell.dart';
 
@@ -17,26 +18,29 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  // Getting snake
-  final SnakeModel snake = SnakeModel();
+  SnakeModel snake = SnakeModel(length: 0);
+  int apple = 0;
 
   // Getting apple
   static var random = Random();
-  int apple = random.nextInt(fieldWidth * fieldHeight);
   void _generateNewApple() {
     apple = random.nextInt(fieldWidth * fieldHeight);
   }
 
-  // Runnig game process
-  void runGame({Speed speed = Speed.normal}) {
+  // Starting game process
+  void startGame({Speed speed = Speed.normal}) {
+    // Init game data
+    SnakeModel snake = SnakeModel();
+    _generateNewApple();
+
+    // Start updating timer
     var duration = Duration(milliseconds: (400 - speed.index * 100));
     Timer.periodic(duration, (Timer timer) {
       _updateField();
 
-      // If snake is dead then cansel game
+      // If snake is dead
       if (!snake.isAlive()) {
         timer.cancel();
-        // _showGameOverScreen();
       }
     });
   }
@@ -110,13 +114,7 @@ class _GameScreenState extends State<GameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      textStyle: const TextStyle(fontSize: 18),
-                    ),
-                    onPressed: () => runGame(),
-                    child: const Text('Start'),
-                  ),
+                  StartButton(toStart: () => startGame()),
                 ],
               ),
             ),
