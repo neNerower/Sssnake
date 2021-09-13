@@ -19,7 +19,9 @@ class GameScreen extends StatefulWidget {
 
 class _GameScreenState extends State<GameScreen> {
   SnakeModel snake = SnakeModel(length: 0);
-  int apple = 0;
+  int apple = -1;
+  // Game running statis
+  bool _isGameRunning = false;
 
   // Getting apple
   static var random = Random();
@@ -29,9 +31,13 @@ class _GameScreenState extends State<GameScreen> {
 
   // Starting game process
   void startGame({Speed speed = Speed.normal}) {
+    print("Start");
     // Init game data
-    SnakeModel snake = SnakeModel();
+    snake = SnakeModel();
     _generateNewApple();
+
+    // Change game running status
+    _isGameRunning = true;
 
     // Start updating timer
     var duration = Duration(milliseconds: (400 - speed.index * 100));
@@ -41,6 +47,7 @@ class _GameScreenState extends State<GameScreen> {
       // If snake is dead
       if (!snake.isAlive()) {
         timer.cancel();
+        _isGameRunning = false;
       }
     });
   }
@@ -102,24 +109,20 @@ class _GameScreenState extends State<GameScreen> {
                     } else if (apple == index) {
                       return Cell(color: Colors.green);
                     } else {
-                      return Cell(color: Colors.grey[850]);
+                      return Cell(color: Colors.grey[900]);
                     }
                   },
                 ),
               ),
             ),
-            // Control bar
-            Padding(
-              padding: EdgeInsets.only(bottom: 10, left: 20, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  StartButton(toStart: () => startGame()),
-                ],
-              ),
-            ),
           ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: !_isGameRunning
+            ? StartButton(
+                toStart: startGame,
+              )
+            : null,
       ),
     );
   }

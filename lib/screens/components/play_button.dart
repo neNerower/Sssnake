@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
 class StartButton extends StatelessWidget {
-  final Function toStart;
+  final void Function() toStart;
   const StartButton({required this.toStart});
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        textStyle: const TextStyle(
-          fontSize: 18,
-          color: Colors.grey,
-        ),
+    return FloatingActionButton.extended(
+      onPressed: toStart,
+      label: Text(
+        "New Game",
+        style: TextStyle(color: Colors.white54, fontSize: 18),
       ),
-      onPressed: () => toStart,
-      child: const Text('New Game'),
+      backgroundColor: Colors.grey[700],
     );
   }
 }
