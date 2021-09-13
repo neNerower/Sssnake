@@ -15,8 +15,8 @@ class SnakeModel {
     this._direction = Direction.values[index];
 
     // Get random start head position
-    int hCoeff = length + random.nextInt(fieldWidth - length);
-    int vCoeff = length + random.nextInt(fieldHeight - length);
+    int hCoeff = length + random.nextInt(fieldWidth - 2 * length);
+    int vCoeff = length + random.nextInt(fieldHeight - 2 * length);
     int headPosition = hCoeff * vCoeff;
 
     // Fill snake body
