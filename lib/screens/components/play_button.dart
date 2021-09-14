@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class StartButton extends StatelessWidget {
+class PlayButton extends StatelessWidget {
   final void Function() toStart;
-  const StartButton({required this.toStart});
+  const PlayButton({required this.toStart});
 
   @override
   Widget build(BuildContext context) {

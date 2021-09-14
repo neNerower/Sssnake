@@ -19,7 +19,7 @@ class _GameScreenState extends State<GameScreen> {
   // Game running statis
   bool _isGameRunning = false;
 
-  void runGame() {
+  void playGame() {
     // Change game running status
     _isGameRunning = true;
 
@@ -51,8 +51,8 @@ class _GameScreenState extends State<GameScreen> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: !_isGameRunning
-            ? StartButton(
-                toStart: runGame,
+            ? PlayButton(
+                toStart: playGame,
               )
             : null,
       ),

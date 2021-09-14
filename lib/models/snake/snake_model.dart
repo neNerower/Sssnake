@@ -17,24 +17,24 @@ class SnakeModel {
     // Get random start head position
     int hCoeff = length + random.nextInt(fieldWidth - 2 * length);
     int vCoeff = length + random.nextInt(fieldHeight - 2 * length);
-    int headPosition = hCoeff * vCoeff;
+    int tailPosition = hCoeff * vCoeff;
 
     // Fill snake body
     int bodyCoeff = _getBodyCoeff(this._direction);
-    this._body = List.generate(length, (int i) => headPosition + i * bodyCoeff);
+    this._body = List.generate(length, (int i) => tailPosition + i * bodyCoeff);
   }
 
   // Count coefficient to fill snake body list
   int _getBodyCoeff(Direction direction) {
     switch (direction) {
       case Direction.up:
-        return fieldWidth;
-      case Direction.down:
         return -fieldWidth;
+      case Direction.down:
+        return fieldWidth;
       case Direction.left:
-        return 1;
-      case Direction.right:
         return -1;
+      case Direction.right:
+        return 1;
     }
   }
 
