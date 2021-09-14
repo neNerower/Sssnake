@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:snake/globals/globals.dart';
 import 'package:snake/models/snake/snake_model.dart';
 
-class GameField {
+class FieldModel {
   SnakeModel _snake = SnakeModel(length: 0);
   int _apple = -1;
 
