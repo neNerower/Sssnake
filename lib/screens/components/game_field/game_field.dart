@@ -11,6 +11,8 @@ class GameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    fieldHeight = fieldWidth ~/ MediaQuery.of(context).size.aspectRatio;
+
     return Expanded(
       // Detector to handle screen swipes
       child: GestureDetector(
