@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snake/screens/game_screen/game_screen.dart';
+import 'package:snake/screens/splash_screen/caption.dart';
 
 import 'snake_logo.dart';
 
@@ -34,15 +35,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Spacer(),
             SnakeLogo(),
-            Text(
-              "S-s-snake",
-              style: TextStyle(
-                color: Colors.grey[800],
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            )
+            Spacer(),
+            Caption()
           ],
         ),
       ),
