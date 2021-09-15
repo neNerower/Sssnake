@@ -41,7 +41,11 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: GameField(fieldModel: _fieldModel),
+      body: Column(
+        children: <Widget>[
+          GameField(fieldModel: _fieldModel),
+        ],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: !_isGameRunning
           ? PlayButton(
