@@ -1,6 +1,6 @@
 library globals;
 
-import 'package:snake/models/speed.dart';
+import 'package:snake/models/field/speed.dart';
 
 // Game field size in sells amount
 int fieldWidth = 20;

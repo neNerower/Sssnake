@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:snake/globals/globals.dart';
 import 'package:snake/models/field/field_model.dart';
-import 'package:snake/screens/components/game_field/game_field.dart';
-import 'package:snake/screens/components/play_button.dart';
+import 'package:snake/screens/game_screen/play_button.dart';
+
+import 'game_field/game_field.dart';
 
 class GameScreen extends StatefulWidget {
   GameScreen({Key? key}) : super(key: key);
