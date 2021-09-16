@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:snake/screens/game_screen/game_screen.dart';
 import 'package:snake/screens/splash_screen/caption.dart';
 
 import 'snake_logo.dart';
@@ -20,11 +19,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   // Go to main screen after duration
   void _navigateHome() async {
-    await Future.delayed(Duration(milliseconds: 2000));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => GameScreen()),
-    );
+    await Future.delayed(Duration(milliseconds: 4000));
+    Navigator.pushReplacementNamed(context, '/game');
   }
 
   @override
