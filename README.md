@@ -1,16 +1,19 @@
-# snake
+# S-s-snake
 
-A new Flutter project.
+## Simple _IOS_ / _Android_ classic 2D snake game
 
-## Getting Started
+<img src="assets/logo.jpg" width="100">
 
-This project is a starting point for a Flutter application.
+## Description
+**Snake** is a video game that _originated_ during the late 1970s in arcades becoming something of a **classic**. It became the standard pre-loaded game on _Nokia phones_ in 1998.
 
-A few resources to get you started if this is your first Flutter project:
+## Gameplay
+Player controls **snake moving** direction with gestures like **swiping**.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The **goal** is to eat as many **apples** as possible. For eating **apples** player gets some **points** and snake **grows up**.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="assets/img_1.jpg" width="300">
+
+Also **snake** can goes **through the walls**.
+
+<img src="assets/img_2.jpg" width="300">
