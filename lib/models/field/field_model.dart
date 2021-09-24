@@ -5,6 +5,7 @@ import 'package:snake/models/snake/snake_model.dart';
 class FieldModel {
   SnakeModel _snake = SnakeModel(length: 0);
   int _apple = -1;
+  int _score = 0;
 
   // Getting apple
   static var random = Random();
@@ -24,6 +25,7 @@ class FieldModel {
     // Eating process
     if (_snake.getHead() == _apple) {
       _snake.eat();
+      _score++;
       _generateNewApple();
     }
   }
@@ -34,5 +36,9 @@ class FieldModel {
 
   int getApple() {
     return _apple;
+  }
+
+  int getScore() {
+    return _score;
   }
 }
