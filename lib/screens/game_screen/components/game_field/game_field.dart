@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:snake/globals/globals.dart';
 import 'package:snake/models/field/field_model.dart';
-import 'package:snake/screens/game_screen/game_field/snake_gesturer.dart';
 
 import 'cell.dart';
+import 'snake_gesturer.dart';
 
 class GameField extends StatelessWidget {
   final FieldModel fieldModel;
