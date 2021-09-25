@@ -7,6 +7,7 @@ import 'package:snake/screens/game_screen/components/game_app_bar.dart';
 
 import 'components/game_field/game_field.dart';
 import 'dialogs/game_over_dialog.dart';
+import 'dialogs/pause_dialog.dart';
 
 class GameScreen extends StatefulWidget {
   GameScreen({Key? key}) : super(key: key);
@@ -18,11 +19,16 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   final FieldModel _fieldModel = FieldModel();
   late Timer _gameTimer;
-  // Game running statis
   bool _isGameRunning = false;
 
+  @override
+  void initState() {
+    _startGame();
+    super.initState();
+  }
+
   // Sterting game
-  void startGame() {
+  void _startGame() {
     // Get random start field state
     _fieldModel.initStartState();
     _play();
@@ -33,7 +39,15 @@ class _GameScreenState extends State<GameScreen> {
     _gameTimer.cancel();
     _isGameRunning = false;
 
-    // TODO: show dialog to end / continue game
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PauseDialog(
+            score: _fieldModel.getScore(),
+            onHome: () {},
+            onPlay: _play);
+      },
+    );
   }
 
   // Play the game from current state
@@ -56,10 +70,16 @@ class _GameScreenState extends State<GameScreen> {
   void _gameOver() {
     _gameTimer.cancel();
     _isGameRunning = false;
-    
-    showDialog(context: context, builder: (BuildContext context) {
-      return GameOverDialog(resultScore: _fieldModel.getScore(), onHome: () {}, onPlay: startGame);
-    });
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return GameOverDialog(
+            resultScore: _fieldModel.getScore(),
+            onHome: () {},
+            onPlay: _startGame);
+      },
+    );
   }
 
   @override
@@ -79,12 +99,6 @@ class _GameScreenState extends State<GameScreen> {
           GameField(fieldModel: _fieldModel),
         ],
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      // floatingActionButton: !_isGameRunning
-      //     ? PlayButton(
-      //         toStart: startGame,
-      //       )
-      //     : null,
     );
   }
 }
