@@ -19,6 +19,7 @@ class RoundedDialog extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Container(
+            height: 300,
             padding: EdgeInsets.only(
               left: _padding,
               top: _imgRadius + _padding,
@@ -28,15 +29,8 @@ class RoundedDialog extends StatelessWidget {
             margin: EdgeInsets.only(top: _imgRadius),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: Colors.grey[600],
+              color: Colors.grey[900],
               borderRadius: BorderRadius.circular(_padding),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.white70,
-                  offset: Offset(0, 10),
-                  blurRadius: 10,
-                )
-              ],
             ),
             child: body,
           ),

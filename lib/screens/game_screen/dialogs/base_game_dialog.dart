@@ -32,7 +32,7 @@ class BaseGameDialog extends StatelessWidget {
               title,
               style: TextStyle(
                 color: Colors.grey[350],
-                fontSize: 28,
+                fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -43,31 +43,27 @@ class BaseGameDialog extends StatelessWidget {
               score.toString(),
               style: TextStyle(
                 color: Colors.grey[350],
-                fontSize: 40,
+                fontSize: 46,
                 fontWeight: FontWeight.bold,
-                shadows: [
-                  Shadow(
-                    color: Colors.white70,
-                    offset: Offset(0, -5),
-                    blurRadius: 10,
-                  ),
-                ],
               ),
             ),
           ),
           Spacer(),
-          Row(children: <Widget>[
-            BeveledDialogButton(
-              title: "Home",
-              backgroundColor: Colors.red[900],
-              onPressed: onHome,
-            ),
-            BeveledDialogButton(
-              title: playTitle,
-              backgroundColor: Colors.green[900],
-              onPressed: onPlay,
-            ),
-          ])
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              BeveledDialogButton(
+                title: "Home",
+                backgroundColor: Colors.red[900],
+                onPressed: onHome,
+              ),
+              BeveledDialogButton(
+                title: playTitle,
+                backgroundColor: Colors.green[900],
+                onPressed: onPlay,
+              ),
+            ],
+          )
         ],
       ),
     );
