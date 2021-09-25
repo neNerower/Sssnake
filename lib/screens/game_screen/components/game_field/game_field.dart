@@ -7,11 +7,16 @@ import 'snake_gesturer.dart';
 
 class GameField extends StatelessWidget {
   final FieldModel fieldModel;
-  const GameField({required this.fieldModel});
+  final double indent;
+
+  const GameField({
+    required this.fieldModel,
+    this.indent = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
-    fieldHeight = fieldWidth ~/ MediaQuery.of(context).size.aspectRatio;
+    fieldHeight = fieldWidth ~/ MediaQuery.of(context).size.aspectRatio - indent.ceil();
 
     return Expanded(
       child: SnakeGesturer(

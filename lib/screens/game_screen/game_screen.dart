@@ -19,6 +19,7 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   final FieldModel _fieldModel = FieldModel();
   late Timer _gameTimer;
+  final double _appBarHeight = 40;
   bool _isGameRunning = false;
 
   @override
@@ -86,7 +87,7 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
+        preferredSize: Size.fromHeight(_appBarHeight),
         child: GameAppBar(
           score: _fieldModel.getScore(),
           isGameRunning: _isGameRunning,
@@ -96,7 +97,7 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
-          GameField(fieldModel: _fieldModel),
+          GameField(fieldModel: _fieldModel, indent: _appBarHeight),
         ],
       ),
     );
