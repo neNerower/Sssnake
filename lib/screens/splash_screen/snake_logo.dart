@@ -9,7 +9,7 @@ class SnakeLogo extends StatelessWidget {
     return Column(
       children: <Widget>[
         Image.asset(
-          'logo.jpg',
+          'assets/logo.jpg',
           height: side,
           width: side,
         ),
