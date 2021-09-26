@@ -24,8 +24,9 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
-    _startGame();
     super.initState();
+    // Starting game after screen opening
+    Future.delayed(Duration.zero, () => _startGame());
   }
 
   // Sterting game
@@ -44,9 +45,7 @@ class _GameScreenState extends State<GameScreen> {
       context: context,
       builder: (BuildContext context) {
         return PauseDialog(
-            score: _fieldModel.getScore(),
-            onHome: () {},
-            onPlay: _play);
+            score: _fieldModel.getScore(), onHome: () {}, onPlay: _play);
       },
     );
   }

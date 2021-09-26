@@ -21,9 +21,12 @@ class GameField extends StatefulWidget {
 class _GameFieldState extends State<GameField> {
   @override
   void initState() {
-    double ratio = MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height - widget.indent);
-    fieldHeight = fieldWidth ~/ ratio;
     super.initState();
+    // Counting field height
+    Future.delayed(Duration.zero, () {
+      double ratio = MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height - widget.indent);
+      fieldHeight = fieldWidth ~/ ratio;
+    });
   }
 
   @override
