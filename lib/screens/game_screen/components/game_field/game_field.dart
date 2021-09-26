@@ -5,22 +5,32 @@ import 'package:snake/models/field/field_model.dart';
 import 'cell.dart';
 import 'snake_gesturer.dart';
 
-class GameField extends StatelessWidget {
+class GameField extends StatefulWidget {
   final FieldModel fieldModel;
   final double indent;
-
+  
   const GameField({
     required this.fieldModel,
     this.indent = 0,
   });
 
   @override
-  Widget build(BuildContext context) {
-    fieldHeight = fieldWidth ~/ MediaQuery.of(context).size.aspectRatio - indent.ceil();
+  _GameFieldState createState() => _GameFieldState();
+}
 
+class _GameFieldState extends State<GameField> {
+  @override
+  void initState() {
+    double ratio = MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height - widget.indent);
+    fieldHeight = fieldWidth ~/ ratio;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Expanded(
       child: SnakeGesturer(
-        snake: fieldModel.getSnake(),
+        snake: widget.fieldModel.getSnake(),
         child: GridView.builder(
           physics: NeverScrollableScrollPhysics(),
           itemCount: fieldHeight * fieldWidth,
@@ -28,9 +38,9 @@ class GameField extends StatelessWidget {
             crossAxisCount: fieldWidth,
           ),
           itemBuilder: (BuildContext context, int index) {
-            if (fieldModel.getSnake().getBody().contains(index)) {
+            if (widget.fieldModel.getSnake().getBody().contains(index)) {
               return Cell(color: Colors.white);
-            } else if (fieldModel.getApple() == index) {
+            } else if (widget.fieldModel.getApple() == index) {
               return Cell(color: Colors.green);
             } else {
               return Cell(color: Colors.grey[900]);
