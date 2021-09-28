@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snake/components/beveled_dialog_button.dart';
+import 'package:snake/components/rounded_dialog_button.dart';
 import 'package:snake/components/rounded_dialog.dart';
 
 class BaseGameDialog extends StatelessWidget {
@@ -52,12 +52,12 @@ class BaseGameDialog extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              BeveledDialogButton(
+              RoundedDialogButton(
                 title: "Home",
                 backgroundColor: Colors.red[900],
                 onPressed: onHome,
               ),
-              BeveledDialogButton(
+              RoundedDialogButton(
                 title: playTitle,
                 backgroundColor: Colors.green[900],
                 onPressed: onPlay,

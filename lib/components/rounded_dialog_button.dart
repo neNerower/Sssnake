@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BeveledDialogButton extends StatelessWidget {
+class RoundedDialogButton extends StatelessWidget {
   final String title;
   final Color? backgroundColor;
   final void Function() onPressed;
 
-  const BeveledDialogButton({
+  const RoundedDialogButton({
     required this.title,
     required this.backgroundColor,
     required this.onPressed,
@@ -16,8 +16,8 @@ class BeveledDialogButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        shape: BeveledRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
         ),
         primary: backgroundColor,
       ),
@@ -28,7 +28,10 @@ class BeveledDialogButton extends StatelessWidget {
           fontSize: 20,
         ),
       ),
-      onPressed: onPressed,
+      onPressed: () {
+        Navigator.of(context).pop();
+        onPressed();
+      },
     );
   }
 }
