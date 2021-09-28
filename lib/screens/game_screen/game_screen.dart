@@ -25,14 +25,13 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    // Starting game after screen opening
     Future.delayed(Duration.zero, () => _startGame());
   }
 
-  // Sterting game
+  // Starting game
   void _startGame() {
     // Get random start field state
-    _fieldModel.initStartState();
+    setState(() => _fieldModel.initStartState());
     _play();
   }
 

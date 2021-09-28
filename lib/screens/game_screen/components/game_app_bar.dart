@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GameAppBar extends StatelessWidget {
   final int score;
   final bool isGameRunning;
-  final Function onPaused;
+  final void Function() onPaused;
   
   const GameAppBar({
     required this.score,
@@ -29,7 +29,7 @@ class GameAppBar extends StatelessWidget {
         Center(
           child: isGameRunning
               ? IconButton(
-                  onPressed: onPaused(),
+                  onPressed: onPaused,
                   iconSize: 32,
                   icon: Icon(Icons.pause),
                 )
