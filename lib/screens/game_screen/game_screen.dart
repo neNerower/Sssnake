@@ -44,7 +44,7 @@ class _GameScreenState extends State<GameScreen> {
       context: context,
       builder: (BuildContext context) {
         return PauseDialog(
-          score: _fieldModel.getScore(),
+          score: _fieldModel.score,
           onResume: _play,
         );
       },
@@ -61,7 +61,7 @@ class _GameScreenState extends State<GameScreen> {
       setState(() => _fieldModel.update());
 
       // Game over
-      if (!_fieldModel.getSnake().isAlive()) {
+      if (!_fieldModel.snake.isAlive) {
         _gameOver();
       }
     });
@@ -76,7 +76,7 @@ class _GameScreenState extends State<GameScreen> {
       context: context,
       builder: (BuildContext context) {
         return GameOverDialog(
-          resultScore: _fieldModel.getScore(),
+          resultScore: _fieldModel.score,
           onRestart: _startGame,
         );
       },
@@ -89,7 +89,7 @@ class _GameScreenState extends State<GameScreen> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(_appBarHeight),
         child: GameAppBar(
-          score: _fieldModel.getScore(),
+          score: _fieldModel.score,
           isGameRunning: _isGameRunning,
           onPaused: _pauseGame,
         ),

@@ -12,25 +12,25 @@ class SnakeGesturer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onVerticalDragUpdate: (details) {
-        if (snake.getDirection() != Direction.down &&
+        if (snake.direction != Direction.down &&
             details.delta.dy < 0) {
           // Turn UP
-          snake.setDirection(Direction.up);
-        } else if (snake.getDirection() != Direction.up &&
+          snake.direction = Direction.up;
+        } else if (snake.direction != Direction.up &&
             details.delta.dy > 0) {
           // Turn DOWN
-          snake.setDirection(Direction.down);
+          snake.direction = Direction.down;
         }
       },
       onHorizontalDragUpdate: (details) {
-        if (snake.getDirection() != Direction.right &&
+        if (snake.direction != Direction.right &&
             details.delta.dx < 0) {
           // Turn LEFT
-          snake.setDirection(Direction.left);
-        } else if (snake.getDirection() != Direction.left &&
+          snake.direction = Direction.left;
+        } else if (snake.direction != Direction.left &&
             details.delta.dx > 0) {
           // Turn RIGHT
-          snake.setDirection(Direction.right);
+          snake.direction = Direction.right;
         }
       },
       child: child,

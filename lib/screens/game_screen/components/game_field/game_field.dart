@@ -33,7 +33,7 @@ class _GameFieldState extends State<GameField> {
   Widget build(BuildContext context) {
     return Expanded(
       child: SnakeGesturer(
-        snake: widget.fieldModel.getSnake(),
+        snake: widget.fieldModel.snake,
         child: GridView.builder(
           physics: NeverScrollableScrollPhysics(),
           itemCount: fieldHeight * fieldWidth,
@@ -41,9 +41,9 @@ class _GameFieldState extends State<GameField> {
             crossAxisCount: fieldWidth,
           ),
           itemBuilder: (BuildContext context, int index) {
-            if (widget.fieldModel.getSnake().getBody().contains(index)) {
+            if (widget.fieldModel.snake.body.contains(index)) {
               return Cell(color: Colors.white);
-            } else if (widget.fieldModel.getApple() == index) {
+            } else if (widget.fieldModel.apple == index) {
               return Cell(color: Colors.green);
             } else {
               return Cell(color: Colors.grey[900]);
