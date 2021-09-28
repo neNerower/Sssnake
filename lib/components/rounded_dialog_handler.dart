@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class RoundedDialog extends StatelessWidget {
+class RoundedDialogHandler extends StatelessWidget {
   final double _padding = 20;
   final double _imgRadius = 45;
   final Widget head;
   final Widget body;
 
-  const RoundedDialog({required this.head, required this.body});
+  const RoundedDialogHandler({required this.head, required this.body});
 
   @override
   Widget build(BuildContext context) {

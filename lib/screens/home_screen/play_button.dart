@@ -9,8 +9,12 @@ class PlayButton extends StatelessWidget {
     return FloatingActionButton.extended(
       onPressed: toStart,
       label: Text(
-        "New Game",
-        style: TextStyle(color: Colors.white54, fontSize: 18),
+        "Play",
+        style: TextStyle(
+          color: Colors.white54,
+          fontSize: 28,
+          letterSpacing: 5,
+        ),
       ),
       backgroundColor: Colors.grey[700],
     );

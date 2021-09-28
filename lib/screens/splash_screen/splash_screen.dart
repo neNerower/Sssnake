@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   // Go to main screen after duration
   void _navigateHome() async {
     await Future.delayed(Duration(milliseconds: 4000));
-    Navigator.pushReplacementNamed(context, '/game');
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override

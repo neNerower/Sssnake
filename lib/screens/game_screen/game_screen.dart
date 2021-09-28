@@ -44,7 +44,9 @@ class _GameScreenState extends State<GameScreen> {
       context: context,
       builder: (BuildContext context) {
         return PauseDialog(
-            score: _fieldModel.getScore(), onHome: () {}, onPlay: _play);
+          score: _fieldModel.getScore(),
+          onResume: _play,
+        );
       },
     );
   }
@@ -74,9 +76,9 @@ class _GameScreenState extends State<GameScreen> {
       context: context,
       builder: (BuildContext context) {
         return GameOverDialog(
-            resultScore: _fieldModel.getScore(),
-            onHome: () {},
-            onPlay: _startGame);
+          resultScore: _fieldModel.getScore(),
+          onRestart: _startGame,
+        );
       },
     );
   }

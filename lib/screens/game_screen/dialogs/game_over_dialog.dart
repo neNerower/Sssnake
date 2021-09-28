@@ -4,13 +4,11 @@ import 'base_game_dialog.dart';
 
 class GameOverDialog extends StatelessWidget {
   final int resultScore;
-  final void Function() onHome;
-  final void Function() onPlay;
+  final void Function() onRestart;
 
   const GameOverDialog({
     required this.resultScore,
-    required this.onHome,
-    required this.onPlay,
+    required this.onRestart,
   });
 
   @override
@@ -20,8 +18,7 @@ class GameOverDialog extends StatelessWidget {
       title: "Game over",
       playTitle: "Restart",
       score: resultScore,
-      onHome: onHome,
-      onPlay: onPlay,
+      onPlay: onRestart,
     );
   }
 }

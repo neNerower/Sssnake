@@ -4,13 +4,11 @@ import 'base_game_dialog.dart';
 
 class PauseDialog extends StatelessWidget {
   final int score;
-  final void Function() onHome;
-  final void Function() onPlay;
+  final void Function() onResume;
 
   const PauseDialog({
     required this.score,
-    required this.onHome,
-    required this.onPlay,
+    required this.onResume,
   });
 
   @override
@@ -20,8 +18,7 @@ class PauseDialog extends StatelessWidget {
       title: "Pause",
       playTitle: "Resume",
       score: score,
-      onHome: onHome,
-      onPlay: onPlay,
+      onPlay: onResume,
     );
   }
 }

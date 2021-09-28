@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:snake/components/rounded_dialog_button.dart';
-import 'package:snake/components/rounded_dialog.dart';
+import 'package:snake/components/rounded_dialog_handler.dart';
 
 class BaseGameDialog extends StatelessWidget {
   final String title;
   final String imagePath;
   final int score;
   final String playTitle;
-  final void Function() onHome;
   final void Function() onPlay;
 
   const BaseGameDialog({
-    this.title = "",
+    required this.title,
     required this.imagePath,
     required this.score,
     required this.playTitle,
-    required this.onHome,
     required this.onPlay,
   });
 
+  void _goHome(BuildContext context) {
+    Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return RoundedDialog(
+    return RoundedDialogHandler(
       head: Image.asset(imagePath),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,7 +57,7 @@ class BaseGameDialog extends StatelessWidget {
               RoundedDialogButton(
                 title: "Home",
                 backgroundColor: Colors.red[900],
-                onPressed: onHome,
+                onPressed: () => _goHome(context),
               ),
               RoundedDialogButton(
                 title: playTitle,
