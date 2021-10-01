@@ -43,7 +43,7 @@ class SnakeModel {
     switch (_direction) {
       // Going up
       case Direction.up:
-        if (head <= fieldWidth) {
+        if (head < fieldWidth) {
           // Go throuth up wall to down
           _body.add(head + fieldWidth * (fieldHeight - 1));
         } else {
