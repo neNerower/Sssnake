@@ -7,15 +7,22 @@ class FieldModel {
   int _apple = -1;
 
   // Getting apple
-  static var random = Random();
-  void _generateNewApple() {
-    _apple = random.nextInt(fieldWidth * fieldHeight);
+  static Random _random = Random();
+  // static int _size = fieldWidth * fieldHeight;
+  // Set<int> _allPositions = Set.of(List<int>.generate(_size, (i) => i));
+  // List<int> _emptyPositions = [];
+
+  void _generateNewFood() {
+    // _emptyPositions = List.of(_allPositions.difference(Set.of(_snake.body)));
+    // _apple = _emptyPositions[_random.nextInt(_emptyPositions.length)];
+    _apple = _random.nextInt(fieldWidth * fieldHeight);
   }
 
+  // Start game state
   void initStartState() {
     // Init game data
     _snake = SnakeModel();
-    _generateNewApple();
+    _generateNewFood();
   }
 
   // Update field state
@@ -24,12 +31,12 @@ class FieldModel {
     // Eating process
     if (_snake.head == _apple) {
       _snake.eat();
-      _generateNewApple();
+      _generateNewFood();
     }
   }
 
   SnakeModel get snake => _snake;
-  
+
   // Apple position
   int get apple => _apple;
 

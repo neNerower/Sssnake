@@ -24,6 +24,10 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void initState() {
+    // Counting field height
+    double ratio = dSize.width / (dSize.height - _appBarHeight);
+    fieldHeight = fieldWidth ~/ ratio;
+
     super.initState();
     Future.delayed(Duration.zero, () => _startGame());
   }
@@ -97,7 +101,7 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
-          GameField(fieldModel: _fieldModel, indent: _appBarHeight),
+          GameField(fieldModel: _fieldModel),
         ],
       ),
     );

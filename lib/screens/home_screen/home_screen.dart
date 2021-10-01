@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snake/globals/globals.dart';
 import 'package:snake/screens/home_screen/play_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class HomeScreen extends StatelessWidget {
 
   // Go to game screen
   void _startPlaying(BuildContext context) {
+    dSize = MediaQuery.of(context).size;
     Navigator.pushReplacementNamed(context, '/game');
   }
 
