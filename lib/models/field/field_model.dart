@@ -8,18 +8,21 @@ class FieldModel {
 
   // Getting apple
   static Random _random = Random();
-  // static int _size = fieldWidth * fieldHeight;
-  // Set<int> _allPositions = Set.of(List<int>.generate(_size, (i) => i));
-  // List<int> _emptyPositions = [];
+  static int _size = 0;
+  Set<int> _allPositions = {};
+  List<int> _emptyPositions = [];
 
   void _generateNewFood() {
-    // _emptyPositions = List.of(_allPositions.difference(Set.of(_snake.body)));
-    // _apple = _emptyPositions[_random.nextInt(_emptyPositions.length)];
-    _apple = _random.nextInt(fieldWidth * fieldHeight);
+    _emptyPositions = List.of(_allPositions.difference(Set.of(_snake.body)));
+    _apple = _emptyPositions[_random.nextInt(_emptyPositions.length)];
   }
 
   // Start game state
   void initStartState() {
+    // For food generating
+    _size = fieldWidth * fieldHeight;
+    _allPositions = Set.of(List<int>.generate(_size, (i) => i));
+
     // Init game data
     _snake = SnakeModel();
     _generateNewFood();
